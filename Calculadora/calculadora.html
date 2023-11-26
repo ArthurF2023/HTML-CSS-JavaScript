@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+ <!--Começo do coidigo da calculadora-->
+<html lang="pt-br">
+    <!--Cabeçario do codigo head-->
+ <head>  
+    <title> Calculadora</title>
+    <meta charset="utf-8">
+    <!--Não estava calculando por que não foi devinido no script os somas e tudo mais -->
+    <script>
+        function controleDeSelecao() {
+            // Adicione aqui qualquer ação desejada ao selecionar uma opção no menu dropdown.
+        }
+
+        function calcular(valor1, valor2) {
+            var txtValor1 = document.getElementById(valor1).value;
+            var txtValor2 = document.getElementById(valor2).value;
+            var operador = document.getElementById("operadores").value;
+            var resultado = 0;
+
+            // Realiza o cálculo com base no operador selecionado
+            switch (operador) {
+                case "+":
+                    resultado = parseFloat(txtValor1) + parseFloat(txtValor2);
+                    break;
+                case "-":
+                    resultado = parseFloat(txtValor1) - parseFloat(txtValor2);
+                    break;
+                case "*":
+                    resultado = parseFloat(txtValor1) * parseFloat(txtValor2);
+                    break;
+                case "/":
+                    resultado = parseFloat(txtValor1) / parseFloat(txtValor2);
+                    break;
+                // Adicione outros casos para as outras operações aqui, se necessário
+            }
+
+            document.getElementById("saida").innerText = "Resultado: " + resultado;
+        }
+
+        function Limpar(valor1, valor2) {
+            document.getElementById(valor1).value = "";
+            document.getElementById(valor2).value = "";
+            document.getElementById("saida").innerText = "Resultado:";
+        }
+    </script>
+ </head>
+  <!--corpo da pagina body -->
+  <!--bgcolor para colocar cor na pagina -->
+     <body bgcolor="orange">
+       <h1>Calculadora 1.0 </h1> 
+       <input type="text" id="txtValor1">
+       <!--Representa um controle que apresenta um menu de opções-->
+        <select id="operadores" onchange="controleDeSelecao();">
+            <!--Cria um agrupamento de opções-->
+            <optgroup label="Basico">
+                
+                
+                <option value="+"> +(somar)</option>
+                <option value="-"> +(subtrair)</option>
+                <option value="*"> +(multiplicar)</option>
+                <option value="/"> +(dividir)</option>
+            </optgroup>
+            <optgroup label="outros"> 
+            
+                <option value="raiz"> raiz</option>
+                <option value="potencia"> Potência</option>
+                <option value="fatorial"> fatorial</option>
+                <option value="porcento"> porcento</option>
+                <option value="media"> media</option> 
+                <option value="calc"> Develop calc</option>
+            </optgroup>      
+        </select>
+        <!-- È usado para criar controles interativos para formulários baseados na web para receber dados do usuário-->
+       <input type="text" id="txtValor2" size="5"><br>
+       <input type="button" onclick="calcular('txtValor1' , 'txtValor2')" value="calcular">
+       <input type="button" onclick="Limpar('txtValor1' , 'txtValor2')" value="Limpar">
+       <p id="saida">Resultado:</p>
+       <hr>
+       
+     </body>
+</html>
+ 
